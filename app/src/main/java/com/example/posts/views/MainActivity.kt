@@ -1,4 +1,4 @@
-package com.example.posts
+package com.example.posts.views
 
 import android.os.Bundle
 import com.google.android.material.snackbar.Snackbar
@@ -9,6 +9,7 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import android.view.Menu
 import android.view.MenuItem
+import com.example.posts.R
 import com.example.posts.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
