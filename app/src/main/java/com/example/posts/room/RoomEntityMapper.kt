@@ -2,8 +2,9 @@ package com.example.posts.room
 
 import com.example.posts.model.Post
 import com.example.posts.utils.EntityMapper
+import javax.inject.Inject
 
-class RoomEntityMapper : EntityMapper<CachedEntity, Post>
+class RoomEntityMapper @Inject constructor(): EntityMapper<CachedEntity, Post>
 {
     override fun mapFromEntity(entity: CachedEntity): Post {
         return Post(

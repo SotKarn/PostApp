@@ -2,8 +2,9 @@ package com.example.posts.retrofit
 
 import com.example.posts.model.Post
 import com.example.posts.utils.EntityMapper
+import javax.inject.Inject
 
-class NetworkEntityMapper: EntityMapper<NetworkEntity, Post>
+class NetworkEntityMapper @Inject constructor(): EntityMapper<NetworkEntity, Post>
 {
     override fun mapFromEntity(entity: NetworkEntity): Post
     {
