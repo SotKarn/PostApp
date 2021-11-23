@@ -5,7 +5,7 @@
     <string name="posts_fragment_label">Posts</string>
     <string name="create_posts_fragment_label">Create Post</string>
     <string name="next">Next</string>
-    <string name="previous">Previous</string>
+    <string name="back">Back</string>
     <string name="create_post_enter_body">Enter Body:</string>
     <string name="create_post_enter_title">Enter title:</string>
     <string name="create_post_enter_user_id">Enter User Id:</string>
