@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".views.CreatePostFragment">
+
+    <TextView
+        android:id="@+id/create_post_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/create_post_enter_id"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/create_post_input_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/create_post_id" />
+
+    <TextView
+        android:id="@+id/create_post_userId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/create_post_enter_user_id"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/create_post_input_id" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/create_post_input_user_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/create_post_userId" />
+
+
+    <TextView
+        android:id="@+id/create_post_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/create_post_enter_title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/create_post_input_user_id" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/create_post_input_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/create_post_title" />
+
+
+    <TextView
+        android:id="@+id/create_post_body"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/create_post_enter_body"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/create_post_input_title" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/create_post_input_body"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/create_post_body" />
+
+
+    <Button
+        android:id="@+id/create_post"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/create_post_create_btn"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

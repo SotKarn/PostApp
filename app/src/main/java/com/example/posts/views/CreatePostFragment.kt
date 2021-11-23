@@ -5,27 +5,20 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.fragment.findNavController
-import com.example.posts.R
-import com.example.posts.databinding.FragmentFirstBinding
+import com.example.posts.databinding.CreatePostFragmentBinding
 
-/**
- * A simple [Fragment] subclass as the default destination in the navigation.
- */
-class FirstFragment : Fragment() {
 
-    private var _binding: FragmentFirstBinding? = null
 
-    // This property is only valid between onCreateView and
-    // onDestroyView.
+class CreatePostFragment : Fragment() {
+
+    private var _binding: CreatePostFragmentBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-
-        _binding = FragmentFirstBinding.inflate(inflater, container, false)
+    ): View {
+        _binding = CreatePostFragmentBinding.inflate(inflater, container, false)
         return binding.root
 
     }
@@ -33,8 +26,8 @@ class FirstFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.buttonFirst.setOnClickListener {
-            findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
+        binding.createPost.setOnClickListener {
+
         }
     }
 
