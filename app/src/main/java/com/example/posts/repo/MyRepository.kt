@@ -29,25 +29,28 @@ class MyRepository  constructor(
         {
             // Get all posts from web
             val response: List<NetworkEntity>? = webInterface.getPosts()
-            var posts: List<Post>?
+            var posts: List<Post>
 
             // Get all room entities
             val cachedPosts: List<CachedEntity>? = postDao.getAllPosts()
 
 
-            response?.let {
+            response?.let { networkList ->
 
-                posts =  networkEntityMapper.mapFromEntityList(response)
+                //Convert NetworkEntities to local
+                posts = networkEntityMapper.mapFromEntityList(networkList)
 
                 if(!cachedPosts.isNullOrEmpty())
                 {
                        val cachedLocalPosts:List<Post> = roomEntityMapper.mapFromEntityList(cachedPosts)
-                       val newcachedPosts: List<Post> = cachedLocalPosts.asSequence().minus(posts!!.toSet()).map{ it }.toList()
+
+                       // Find differences between cache and network posts
+                       val newCachedPosts: List<Post> = cachedLocalPosts.asSequence().minus(posts.toSet()).map{ it }.toList()
 
                        // If cache has more items than the web => add the new items to web
-                       if (newcachedPosts.isNotEmpty())
+                       if (newCachedPosts.isNotEmpty())
                        {
-                           newcachedPosts.forEach { newCachedPost ->
+                           newCachedPosts.forEach { newCachedPost ->
                                Log.e(TAG, " add newWebPosts id: " + newCachedPost.id.toString() )
                                webInterface.createPost(networkEntityMapper.mapToEntity(newCachedPost))
                            }
@@ -55,14 +58,14 @@ class MyRepository  constructor(
                        // If cache has no new items, we want to check if the web has more to add them in cache
                        else
                        {
-                           val newWebPosts: List<Post> = posts!!.asSequence().minus(cachedLocalPosts.toSet()).map{ it }.toList()
+                           val newWebPosts: List<Post> = posts.asSequence().minus(cachedLocalPosts.toSet()).map{ it }.toList()
 
                            //if web has more items, then remove them
                            if(newWebPosts.isNotEmpty())
                            {
                                newWebPosts.forEach { newWebPost ->
-                                   Log.e(TAG, " delete newWebPosts id: " + newWebPost.id.toString() )
-                                   webInterface.deletePost(newWebPost.id)
+                                    Log.e(TAG, " delete newWebPosts id: " + newWebPost.id.toString() )
+                                    webInterface.deletePost(newWebPost.id)
                                }
                            }
                        }
@@ -70,8 +73,8 @@ class MyRepository  constructor(
                 }
                 else
                 {
-                    posts!!.forEach { post->
-                        postDao.insert(roomEntityMapper.mapToEntity(post))
+                    posts.forEach { post->
+                          postDao.insert(roomEntityMapper.mapToEntity(post))
                     }
                     emit(DataStates.Success(posts))
                 }
@@ -85,7 +88,6 @@ class MyRepository  constructor(
                 }
             }
 
-//            emit(DataStates.Success(roomEntityMapper.mapFromEntityList(cachedPosts)))
         }catch (e: UnknownHostException)
         {
             emit(DataStates.Error(e))
