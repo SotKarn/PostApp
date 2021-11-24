@@ -1,7 +1,6 @@
 package com.example.posts.views
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -27,7 +26,6 @@ class DetailsFragment: Fragment(), DetailsFragmentViewModel.IDetailsFragment
     private var _binding: DetailsFragmentBinding? = null
     private val binding get() = _binding!!
     private val viewModel: DetailsFragmentViewModel by viewModels()
-    private val TAG = "DetailsFragment"
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -55,10 +53,6 @@ class DetailsFragment: Fragment(), DetailsFragmentViewModel.IDetailsFragment
 
         binding.detailsFab.setOnClickListener {
             viewModel.setStateEvent(this, DetailsStateEvent.Remove, id.toInt())
-        }
-
-        binding.detailsBackBtn.setOnClickListener{
-            findNavController().navigate(R.id.action_DetailsFragment_to_PostFragment)
         }
 
         binding.postId.text = id
@@ -91,7 +85,7 @@ class DetailsFragment: Fragment(), DetailsFragmentViewModel.IDetailsFragment
 
             }
             is DataStates.Error -> {
-                Log.e(TAG, "flowResponse: ", message.exception)
+                Toast.makeText(context,"Cannot delete post", Toast.LENGTH_SHORT).show()
             }
         }
         findNavController().navigate(R.id.action_DetailsFragment_to_PostFragment)

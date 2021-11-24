@@ -94,15 +94,6 @@
         </LinearLayout>
     </LinearLayout>
 
-    <Button
-        android:id="@+id/details_back_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/back"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/details_fab"
         android:layout_width="wrap_content"

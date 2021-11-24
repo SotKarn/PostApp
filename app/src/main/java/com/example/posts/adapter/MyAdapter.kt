@@ -58,12 +58,18 @@ open class MyAdapter: Adapter<MyAdapter.ViewHolder>()
 
     fun updatePosts(posts: List<Post>)
     {
-        postList?.let {
-            it.clear()
-            it.addAll(posts)
+        postList?.let { list->
+            list.clear()
+            posts.forEach { post->
+                list.add(post)
+                notifyItemChanged(list.size - 1)
+            }
         }?: run {
             postList = mutableListOf()
-            postList!!.addAll(posts)
+            posts.forEach { post->
+                postList!!.add(post)
+                notifyItemChanged(postList!!.size - 1)
+            }
         }
     }
 }

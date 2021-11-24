@@ -1,11 +1,11 @@
 package com.example.posts.views
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -20,7 +20,7 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class PostsFragment: Fragment() {
-    private val TAG = "PostsFragment"
+
     private var _binding: PostsFragmentBinding? = null
     private val adapter: MyAdapter = MyAdapter()
     private val viewModel: PostFragmentViewModel by viewModels()
@@ -78,7 +78,7 @@ class PostsFragment: Fragment() {
                 is DataStates.Success<List<Post>> ->
                 {
                     if(datastate.data != null)
-                        appendPost(datastate.data)
+                        adapter.updatePosts(datastate.data)
                 }
                 is DataStates.Error -> {
                     displayError(datastate.exception.toString())
@@ -90,17 +90,12 @@ class PostsFragment: Fragment() {
         })
     }
 
-    private fun appendPost(posts: List<Post>)
-    {
-        adapter.updatePosts(posts)
-        adapter.notifyDataSetChanged()
-    }
 
     //
     private fun displayError(message: String?)
     {
         message?.let{
-           Log.e(TAG, "displayError: $it")
+            Toast.makeText(context, "Couldn't connect to host.Please check internet connection", Toast.LENGTH_SHORT).show()
        }
     }
 }
