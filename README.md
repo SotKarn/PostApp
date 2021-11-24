@@ -13,6 +13,6 @@ From the PostFragment, on an recyclerView item click, it navigates to another fr
 In addition, from the PostFragment you can create a new post by pressing the floatingActionButton, where you navigate to Fragment (CreatePostFragment).
 
 ### Libraries
-Persisting data: Room v2.2.5
-HTTP Client: Retrofit v2.9.0
-Dependency Injection: Dagger-Hilt v2.38.1
+Persisting data: Room v2.2.5 <br>
+HTTP Client: Retrofit v2.9.0 <br>
+Dependency Injection: Dagger-Hilt v2.38.1 <br>
